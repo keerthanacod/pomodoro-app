@@ -1,0 +1,191 @@
+.kitty-pet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+  color: #66516b;
+  font-family: inherit;
+}
+
+.kitty-stage {
+  position: relative;
+  width: 230px;
+  max-width: 100%;
+  animation: kitty-float 2.8s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.kitty-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 7px 5px rgba(185, 139, 170, 0.12));
+}
+
+.kitty-eyes {
+  transform-origin: center;
+}
+
+.kitty-art.is-blinking {
+  animation: kitty-blink 0.18s ease-in-out;
+}
+
+.kitty-costume {
+  position: absolute;
+  z-index: 2;
+  top: -7%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65%;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.kitty-costume span {
+  display: block;
+  font-size: 54px;
+  line-height: 1;
+  filter: drop-shadow(0 3px 2px rgba(100, 70, 90, 0.12));
+}
+
+.costume-bunny,
+.costume-penguin,
+.costume-bear,
+.costume-chick,
+.costume-strawberry,
+.costume-panda,
+.costume-shiba {
+  animation: costume-pop 0.3s ease-out;
+}
+
+.kitty-message {
+  margin: 0;
+  color: #92718a;
+  font-size: 14px;
+  text-align: center;
+}
+
+.kitty-nom {
+  color: #bd79a5;
+  font-size: 13px;
+  animation: nom-bounce 0.3s ease-in-out infinite alternate;
+}
+
+.kitty-food-pop {
+  position: absolute;
+  top: 20%;
+  right: 0;
+  font-size: 23px;
+  animation: food-float 0.65s ease-in-out infinite alternate;
+}
+
+.kitty-costume-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  width: 100%;
+}
+
+.kitty-costume-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 10px;
+  border: 1px solid #efdfeb;
+  border-radius: 15px;
+  background: #fffafd;
+  color: #705a74;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.kitty-costume-button span {
+  font-size: 15px;
+}
+
+.kitty-costume-button:hover {
+  background: #fff0f8;
+}
+
+.kitty-costume-button.active {
+  background: #f8e5f2;
+  border-color: #bd8bad;
+}
+
+.kitty-feed-demo {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.kitty-feed-demo button {
+  padding: 8px 12px;
+  border: 1px solid #e9d6e5;
+  border-radius: 14px;
+  background: #fff7fb;
+  color: #705a74;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+}
+
+.kitty-feed-demo button:hover {
+  background: #f8e5f2;
+}
+
+.kitty-feed-demo button:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+@keyframes kitty-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes kitty-blink {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.96); }
+}
+
+@keyframes costume-pop {
+  from { transform: scale(0.8); opacity: 0.5; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes nom-bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-3px); }
+}
+
+@keyframes food-float {
+  from { transform: translateY(4px) rotate(-8deg); }
+  to { transform: translateY(-7px) rotate(8deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kitty-stage,
+  .kitty-art.is-blinking,
+  .kitty-costume span,
+  .kitty-nom,
+  .kitty-food-pop {
+    animation: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .kitty-stage {
+    width: 195px;
+  }
+
+  .kitty-costume span {
+    font-size: 44px;
+  }
+}
